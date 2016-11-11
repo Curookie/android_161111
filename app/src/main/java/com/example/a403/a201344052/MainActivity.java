@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +13,9 @@ public class MainActivity extends AppCompatActivity {
     TextView tv1;
     Button b1;
     Button b2;
+
+    CheckBox cb1;
+    CheckBox cb2;
 
 
     @Override
@@ -43,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = null;
+                if(cb1.isChecked()) str+=cb1.getText()+" ";
+                if(cb2.isChecked()) str+=cb2.getText()+" ";
+                if(str.equals(null)) Toast.makeText(getApplicationContext(),"아무 것도 선택 되지 않았습니다.",Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getApplicationContext(),str+"가 선택 되었습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }
