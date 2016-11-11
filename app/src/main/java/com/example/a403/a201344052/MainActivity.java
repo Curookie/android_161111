@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     CheckBox cb1;
     CheckBox cb2;
+
+    RadioButton rb1;
+    RadioButton rb2;
 
 
     @Override
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        cb1 = (CheckBox)findViewById(R.id.checkBox);
         cb1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +60,36 @@ public class MainActivity extends AppCompatActivity {
                 if(cb2.isChecked()) str+=cb2.getText()+" ";
                 if(str.equals(null)) Toast.makeText(getApplicationContext(),"아무 것도 선택 되지 않았습니다.",Toast.LENGTH_SHORT).show();
                 else Toast.makeText(getApplicationContext(),str+"가 선택 되었습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        cb2 = (CheckBox)findViewById(R.id.checkBox);
+        cb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String str = null;
+                if(cb1.isChecked()) str+=cb1.getText()+" ";
+                if(cb2.isChecked()) str+=cb2.getText()+" ";
+                if(str.equals(null)) Toast.makeText(getApplicationContext(),"아무 것도 선택 되지 않았습니다.",Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getApplicationContext(),str+"가 선택 되었습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        rb1 = (RadioButton) findViewById(R.id.radioButton);
+        rb1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(rb1.isChecked()) Toast.makeText(getApplicationContext(),rb1.getText()+"가 선택 되었습니다.",Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getApplicationContext(),rb2.getText()+"가 선택 되었습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        rb2 = (RadioButton) findViewById(R.id.radioButton);
+        rb2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(rb1.isChecked()) Toast.makeText(getApplicationContext(),rb1.getText()+"가 선택 되었습니다.",Toast.LENGTH_SHORT).show();
+                else Toast.makeText(getApplicationContext(),rb2.getText()+"가 선택 되었습니다.",Toast.LENGTH_SHORT).show();
             }
         });
 
