@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         calv1.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                Toast.makeText(getApplicationContext(),Long.toString(calv1.getDate())+"날을 선택하셨습니다.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),Integer.toString(year)+"년 "+Integer.toString(month)+"월 "+Integer.toString(year)+"일을 선택하셨습니다.",Toast.LENGTH_LONG).show();
             }
         });
     }
