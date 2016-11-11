@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RatingBar;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     RadioButton rb2;
 
     RatingBar ratb1;
+
+    CalendarView calv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,5 +106,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        calv1 = (CalendarView)findViewById(R.id.calendarView);
+        calv1.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                Toast.makeText(getApplicationContext(),Long.toString(calv1.getDate())+"날을 선택하셨습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
