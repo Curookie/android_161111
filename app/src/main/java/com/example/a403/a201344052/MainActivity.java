@@ -6,12 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView tv1;
     Button b1;
@@ -32,29 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        b1 = (Button)findViewById(R.id.button);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"안녕하세요",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        tv1 = (TextView) findViewById(R.id.textview1);
-        tv1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Hello World!!",Toast.LENGTH_LONG).show();
-            }
-        });
-
-        b2 = (Button)findViewById(R.id.button2);
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"My Name is Curookie",Toast.LENGTH_LONG).show();
-            }
-        });
+        setButton();
+        setTextView();
 
         cb1 = (CheckBox)findViewById(R.id.checkBox);
         cb1.setOnClickListener(new View.OnClickListener() {
@@ -110,8 +90,39 @@ public class MainActivity extends AppCompatActivity {
         calv1.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                Toast.makeText(getApplicationContext(),Integer.toString(year)+"년 "+Integer.toString(month)+"월 "+Integer.toString(year)+"일을 선택하셨습니다.",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),Integer.toString(year)+"년 "+Integer.toString(month)+"월 "+Integer.toString(dayOfMonth)+"일을 선택하셨습니다.",Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+
+    void setButton(){
+        b1 = (Button)findViewById(R.id.button);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"안녕하세요",Toast.LENGTH_SHORT).show();
+            }
+        });
+        b2 = (Button)findViewById(R.id.button2);
+        b2.setOnClickListener(this);
+
+    }
+
+    void setTextView(){
+        tv1 = (TextView) findViewById(R.id.textview1);
+        tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Hello World!!",Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.button2)
+            Toast.makeText(getApplicationContext(),"My Name is Curookie",Toast.LENGTH_LONG).show();
     }
 }
