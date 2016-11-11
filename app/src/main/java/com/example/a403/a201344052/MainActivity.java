@@ -4,11 +4,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView tv1;
     Button b1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(),"안녕하세요",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        tv1 = (TextView) findViewById(R.id.textview1);
+        tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"Hello World!!",Toast.LENGTH_LONG).show();
             }
         });
     }
